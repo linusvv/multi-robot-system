@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <title>Start</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<a class="float">
+  <button onclick="parent.open('http://tumkolleg.ovtg.de/')" class="float"></button>
+</a>
+
+<body>
+  <div class="topnav" id="myTopnav">
+    <a id="home" href="/">Home</a>
+    <a href="/start" class="active">Start</a>
+    <a href="/exchange">Exchange</a>
+    <a href="/end">End</a>
+    <a href="/summary">Summary</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+  <div class="sideinf">
+    <p>Coordinates:</p>
+    <p id="inf"></p>
+
+  </div>
+
+  <div class="sidenav">
+    <h1>MRS</h1>
+    <h2>Information:</h2>
+    <p>Chosen points:</p>
+    <p id="istart">Start:</p>
+    <p id="iexchange">Exchange:</p>
+    <p id="iend">End:</p>
+    <p class="credits">MRS by Felix Müller-Volbehr & Linus Väthröder</p>
+  </div>
+
+  <div class="container" id="container">
+    <img src="map.jpg" alt="" />
+
+    <button id="A" class="btn" onclick="window.location.href = '#Link1'">
+      A
+    </button>
+    <button id="B" class="btn" onclick="window.location.href = '#Link2'">
+      B
+    </button>
+    <button id="C" class="btn" onclick="window.location.href = '#Link3'">
+      C
+    </button>
+    <button id="D" class="btn" onclick="window.location.href = '#Link4'">
+      D
+    </button>
+  </div>
+
+  <body>
+    <script src="client.js">
+
+    </script>
+  </body>
+
+</html>

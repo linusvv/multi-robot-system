@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <title>MRS</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<a class="float">
+  <button onclick="parent.open('http://tumkolleg.ovtg.de/')" class="float"></button>
+</a>
+
+<body>
+
+  <body>
+
+    <div class="topnav" id="myTopnav">
+      <a id="home" href="/">Cancel</a>
+      <a id="submit" class="right" class="active" href="/calculating"> Submit </a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+
+    <div class="sidenav">
+      <h1>MRS</h1>
+      <p class="credits">MRS by Felix Müller-Volbehr & Linus Väthröder</p>
+    </div>
+    <div class="main">
+      <h1>Please Check the Input</h1>
+
+
+      <div class="container2" id="container2">
+
+
+
+
+
+        <button id="istart2" class="btn" onclick="window.location.href = '/start'">
+          ?
+        </button>
+        <button id="iexchange2" class="btn" onclick="window.location.href = '/exchange'">
+          ?
+        </button>
+        <button id="iend2" class="btn" onclick="window.location.href = '/end'">
+          ?
+        </button>
+        <ul class='loading-frame1' id="loading-frame1">
+          <div class='circle'></div>
+          <div class='circle'></div>
+          <div class='circle'></div>
+          <div class='circle'></div>
+          <div class='circle'></div>
+          <div class='circle'></div>
+          <div class='circle'></div>
+          <div class='circle'></div>
+          <div class='circle'></div>
+          <div class='circle'></div>
+        </ul>
+        <ul class='loading-frame2' id="loading-frame2">
+          <div class='circle2'></div>
+          <div class='circle2'></div>
+          <div class='circle2'></div>
+          <div class='circle2'></div>
+          <div class='circle2'></div>
+          <div class='circle2'></div>
+          <div class='circle2'></div>
+          <div class='circle2'></div>
+          <div class='circle2'></div>
+          <div class='circle2'></div>
+        </ul>
+        <ul class='loading-frame3' id="loading-frame3">
+          <div class='circle3'></div>
+          <div class='circle3'></div>
+          <div class='circle3'></div>
+          <div class='circle3'></div>
+          <div class='circle3'></div>
+          <div class='circle3'></div>
+          <div class='circle3'></div>
+          <div class='circle3'></div>
+          <div class='circle3'></div>
+        </ul>
+        <ul class='loading-frame4' id="loading-frame4">
+          <div class='circle4'></div>
+          <div class='circle4'></div>
+          <div class='circle4'></div>
+          <div class='circle4'></div>
+          <div class='circle4'></div>
+          <div class='circle4'></div>
+          <div class='circle4'></div>
+          <div class='circle4'></div>
+          <div class='circle4'></div>
+        </ul>
+
+      </div>
+
+
+
+
+
+      <body>
+      </body>
+      <script>
+
+
+
+        setInterval(function () {
+          //console.log("hi")
+
+          fetch("/istart", { method: "GET", headers: { 'Content-Type': 'application/json' }, })
+            .then(function (response) {
+
+              if (response.ok) return response.json();
+              throw new Error("Request failed.");
+            })
+            .then(function (data) {
+
+              if (data != undefined) {
+                document.getElementById(
+                  "istart2"
+                ).childNodes[0].nodeValue = `${data}`;
+              }
+            })
+            .catch(function (error) {
+              alert(error);
+            });
+        }, 100);
+        setInterval(function () {
+          //alert("hello");
+          fetch("/iexchange", { method: "GET", headers: { 'Content-Type': 'application/json' }, })
+            .then(function (response) {
+
+              if (response.ok) return response.json();
+              throw new Error("Request failed.");
+            })
+            .then(function (data) {
+              if (data != undefined) {
+                document.getElementById(
+                  "iexchange2"
+                ).innerHTML = ` ${data} `;
+
+              }
+            })
+            .catch(function (error) {
+              alert(error);
+            });
+        }, 100);
+
+        setInterval(function () {
+          //alert("hello");
+          fetch("/iend", { method: "GET", headers: { 'Content-Type': 'application/json' }, })
+            .then(function (response) {
+
+              if (response.ok) return response.json();
+              throw new Error("Request failed.");
+            })
+            .then(function (data) {
+              if (data != undefined) {
+                document.getElementById(
+                  "iend2"
+                ).innerHTML = ` ${data} `;
+
+
+
+
+
+              }
+              //alert(data.LOC);
+            })
+            .catch(function (error) {
+              alert(error);
+            });
+        }, 100);
+
+        setInterval(function () {
+          //alert("hello");
+          fetch("/errorcheck", { method: "GET", headers: { 'Content-Type': 'application/json' }, })
+            .then(function (response) {
+
+              if (response.ok) return response.json();
+              throw new Error("Request failed.");
+            })
+            .then(function (data) {
+              if (data != undefined) {
+                console.log(data);
+                let select = data;
+                switch (select) {
+
+                  case 0:
+                    console.log("recieved 0"); //both ´true
+                    document.getElementById("loading-frame2").style.visibility = "visible";
+                    document.getElementById("loading-frame4").style.visibility = "hidden";
+                    document.getElementById("loading-frame1").style.visibility = "visible";
+                    document.getElementById("loading-frame3").style.visibility = "hidden";
+                    document.getElementById("submit").style.visibility = "visible";
+                    break;
+                  case 1://first false
+                    console.log("recieved 1");
+                    document.getElementById("loading-frame2").style.visibility = "visible";
+                    document.getElementById("loading-frame4").style.visibility = "hidden";
+                    document.getElementById("loading-frame1").style.visibility = "hidden";
+                    document.getElementById("loading-frame3").style.visibility = "visible";
+                    document.getElementById("submit").style.visibility = "hidden";
+                    break;
+                  case 2://second false
+                    console.log("recieved 2");
+                    document.getElementById("loading-frame2").style.visibility = "hidden";
+                    document.getElementById("loading-frame4").style.visibility = "visible";
+                    document.getElementById("loading-frame1").style.visibility = "visible";
+                    document.getElementById("loading-frame3").style.visibility = "hidden";
+                    document.getElementById("submit").style.visibility = "hidden";
+                    break;
+                  case 3://both false
+                    console.log("recieved 3");
+                    document.getElementById("loading-frame2").style.visibility = "hidden";
+                    document.getElementById("loading-frame4").style.visibility = "visible";
+                    document.getElementById("loading-frame1").style.visibility = "hidden";
+                    document.getElementById("loading-frame3").style.visibility = "visible";
+                    document.getElementById("submit").style.visibility = "hidden";
+                    break;
+                }
+
+
+
+
+              }
+
+
+
+
+            })
+          //alert(data.LOC);
+        }, 100)
+        const button = document.getElementById("submit");
+        button.addEventListener("click", function (e) {
+
+          fetch("/execute", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+
+          })
+        })
+          .then(function (response) {
+            if (response.ok) {
+              //alert("click was recorded");
+              return;
+            }
+            throw new Error("Request failed.");
+          })
+          .catch(function (error) {
+            alert(error);
+          });
+
+
+
+
+
+
+
+      </script>
+
+</html>

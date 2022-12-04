@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <title>MRS</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<a class="float">
+  <button onclick="parent.open('http://tumkolleg.ovtg.de/')" class="float"></button>
+</a>
+
+<body>
+
+  <body>
+    <div class="topnav" id="myTopnav">
+      <a>Logistics-Robot-System (Temporary Name) </a>
+      <a class="right" id="reset" href="/">Cancel</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+
+    <div class="sidenav">
+      <h1>MRS</h1>
+      <p class="credits">MRS by Felix Müller-Volbehr & Linus Väthröder</p>
+    </div>
+
+    <div class="main">
+      <h1 id="process">Process is Running</h1>
+      <p>
+        Please note a few safety rules: </p>
+       <p>1. stay away from the robots while they are in action.</p> 
+        <p>2. follow the safety instructions of the robots and followers for your own protection.</p>
+        <p>3. do not leave the robots unattended.</p>
+        <p>4. be ready to cancel orders and intervene in the event of problems.</p>
+      
+
+      <div class="box">
+        <a class="button" id="box" href="#popup1">Let me Pop up</a>
+      </div>
+      <div class="errorbox">
+        <a class="button" id="errorbox" href="#popup2">Let me Pop up</a>
+      </div>
+      <p id="progress">Progress:</p>
+    </div>
+    <div class="progress">
+      <div class="progress-value" id="progress-value"></div>
+    </div>
+
+
+
+    <div id="popup1" class="overlay">
+      <div class="popup">
+        <h2>Process Completed</h2>
+        <a class="close" href="#">&times;</a>
+        <div class="content">
+          You can now close the window
+        </div>
+      </div>
+    </div>
+    <div id="popup2" class="overlay">
+      <div class="popup">
+        <h2>Error</h2>
+        <a class="close" href="#">&times;</a>
+        <div class="content" id="errorcontent">
+          Error Message: ???
+        </div>
+      </div>
+    </div>
+
+
+
+  </body>
+
+  <script>
+
+    setTimeout(function () {
+      fetch("/time", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      })
+        .then(function (response) {
+          if (response.ok) return response.json();
+          throw new Error("Request failed.");
+        })
+        .then(function (data) {
+          if (data != undefined) {
+            try {
+              document.getElementById(
+                "progress-value"
+              ).style.animationDuration = data + "s";
+
+            } catch { }
+
+            window.setTimeout('location.href="/"', data * 1000 + 2000);
+            window.setTimeout(function () {
+              document.getElementById("box").click()
+              document.getElementById("process").innerHTML = "Process Completed"
+              document.getElementById("progress").innerHTML = "Done"
+              document.getElementById("progress").style.color = '#2366b1'
+
+
+            }, data * 1000);
+
+          }
+
+          //alert(data.LOC);
+        })
+        .catch(function (error) {
+          alert(error);
+        });
+      fetch("/errormessage", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      })
+        .then(function (response) {
+          if (response.ok) return response.json();
+        })
+        .then(function (data) {
+          if (data != 0) {
+            document.getElementById("errorcontent").innerHTML = `Error Message: ${data}`;
+            document.getElementById("process").innerHTML = "Error"
+
+            document.getElementById("progress").innerHTML = "Not completed"
+            document.getElementById("progress").style.color = 'red'
+            document.getElementById("errorbox").click()
+          }
+        });
+
+
+    }, 0);
+
+
+
+
+
+  </script>
+
+</html>

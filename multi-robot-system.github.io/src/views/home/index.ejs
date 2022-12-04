@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <title>MRS</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<a class="float">
+  <button onclick="parent.open('http://tumkolleg.ovtg.de/')" class="float"></button>
+</a>
+
+<body>
+
+  <body>
+    <div class="topnav" id="myTopnav">
+      <a href="/">Multi-Robot-System </a>
+      <a id="index" class="right" href="/start">Start </a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+
+    <div class="sidenav">
+      <h1>MRS</h1>
+      <p class="credits">MRS by Felix Müller-Volbehr & Linus Väthröder</p>
+    </div>
+
+    <div class="main">
+      <h1>Multi-Robot System</h1>
+      <p> Development of a system where two mobile robots interact to fulfill a transportation order.
+        The order includes the pick up location, the exchange location and the destined location.
+        One Robot strictly communicates over a web interface.
+        The other robot's communication is handled by a ROS node.
+        The server servers as a central unit to give out the orders to the robots and monitor the process.
+        Furthermore, it will compute optimal time frames, so that the exchange process proceeds flawlessly without any
+        waiting times.
+      </p>
+    </div>
+  </body>
+
+</html>
