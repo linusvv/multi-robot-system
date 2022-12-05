@@ -10,11 +10,11 @@ Public version of the LRS, implemented at the Chair of Materials Handling, Mater
 5.	odometry.js: Adds the option to convert the odometric data sent by the Tugger Train to static coordinates.
 6.	app.js: Separated instance of the server-side GUI to run it standalone.
 7.	(Folder) public: Contains static data for the Webserver and images. 
-  a.	client.js: the client-side JavaScript code for the selection pages.
-  b.	style.css: Stylesheet for the GUI.
+  - client.js: the client-side JavaScript code for the selection pages.
+  - 	style.css: Stylesheet for the GUI.
 8.	(Folder) routes: Routes for rendering the pages are saved here.
 9.	(Folder) views: 
-  a.	(Folder) home: The EJS Webpages.
+  -	(Folder) home: The EJS Webpages.
 10.	2022-10-19-15-17-37.bag: rosbag file that is used for testing or simulation purposes.
 
 
@@ -50,7 +50,7 @@ Keep in mind that this project is designed for two mobile robots and even though
 1.	Run `node src/app` within the project directory.
 2.	Open a browser and go to ‘http://localhost:8080’.
 
-##Common Errors
+## Common Errors
 In the event of the error, `rosnodejs.require(..) is not a function` or a similar  rosnodejs-related error message: 
 3.	Delete the node_modules folder from the project and do not run `npm install` in the project folder again.
 4.	Enter the root directory, and there install all Node packages globally. 
