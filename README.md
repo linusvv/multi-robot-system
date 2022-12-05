@@ -3,7 +3,7 @@ Public version of the LRS, implemented at the Chair of Materials Handling, Mater
 
  All project-related sub-folders and scripts are in the src directory. To navigate the project, read the following brief description. Also, consider the comments inside the scripts.
  
-1.	index.js: Contains the backend. All processes are coordinated and executed there. To follow the backend step-by-step logic in the code, go to the ‘trigger’ Emitter (l. 197).
+1.	index.js: Contains the backend. All processes are coordinated and executed there. To follow the backend step-by-step logic in the code, go to the ‘trigger’ Emitter.
 2.	computation.js: Contains the computation module that returns the task allocation.
 3.	map.js: The layout of the fml test hall as a two-dimensional array.
 4.	transformation.js: Contains the static transformations (currently only the Tugger Train transformations are active in the computation).
