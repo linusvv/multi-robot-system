@@ -52,10 +52,10 @@ Keep in mind that this project is designed for two mobile robots and even though
 
 ## Common Errors
 In the event of the error, `rosnodejs.require(..) is not a function` or a similar  rosnodejs-related error message: 
-3.	Delete the node_modules folder from the project and do not run `npm install` in the project folder again.
-4.	Enter the root directory, and there install all Node packages globally. 
+1.	Delete the node_modules folder from the project and do not run `npm install` in the project folder again.
+2.	Enter the root directory, and there install all Node packages globally. 
     The `package.json file` includes the names of all required Node modules. 
     Run `npm install -g <package name>` for each Node module.
-5.	This is a very annoying error; unfortunately, we do not know the cause of it. If this approach does not work, keep trying by deleting and reinstalling the project. 
+3.	This is a very annoying error; unfortunately, we do not know the cause of it. If this approach does not work, keep trying by deleting and reinstalling the project. 
 
 
